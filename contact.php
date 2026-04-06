@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Ground & Gone for yard cleanup and junk removal services. Get a free quote today.">
+    <title>Ground & Gone | Contact Us</title>    <link rel="icon" href="assets/grounds-and-gone-logo2.png" type="image/png">
+    <link rel="alternate icon" href="assets/website-logo.png" type="image/png">    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <nav class="navbar" aria-label="Primary">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-dumpster" aria-hidden="true"></i>
+                <h1>Ground &amp; Gone</h1>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+                <li role="none"><a role="menuitem" href="index.html#services">Services</a></li>
+                <li role="none"><a role="menuitem" href="index.html#about">About</a></li>
+                <li role="none"><a role="menuitem" href="#main-content">Contact</a></li>
+            </ul>
+            <div class="nav-contact">
+                <a href="tel:3235095782" class="phone"><i class="fas fa-phone"></i> (323) 509-5782</a>
+                <a href="#main-content" class="btn-primary">Get Free Quote</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="main-content" class="contact-page">
+        <div class="container">
+            <div class="section-header">
+                <h1>Contact Ground &amp; Gone</h1>
+                <p>Get your free quote today. We respond within 1 hour during business hours.</p>
+            </div>
+            <div class="contact-intro">
+                <p>Ready to clean up your yard or remove unwanted junk? Fill out the form below or call us directly. Our team serves the Michigan area with fast, professional service.</p>
+                <p><strong>Business Hours:</strong> Monday-Friday 8AM-6PM, Saturday 9AM-4PM</p>
+            </div>
+            <div class="contact-content">
+                <form id="contact-form" action="https://formspree.io/f/mreokvlj" method="POST" enctype="multipart/form-data" novalidate>
+                    <label for="name">Your Name</label>
+                    <input name="name" id="name" type="text" placeholder="Your Name" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input name="phone" id="phone" type="tel" placeholder="Phone Number" pattern="^[0-9\s\-\(\)+]{10,20}$" required title="Enter a valid phone number">
+
+                    <label for="email">Email Address</label>
+                    <input name="email" id="email" type="email" placeholder="Email Address" required>
+
+                    <label for="details">Tell us about your project</label>
+                    <textarea name="message" id="details" placeholder="Tell us about your project (junk, yard size, photos if you have them)..." rows="6"></textarea>
+
+                    <label for="photo">Attach a photo (required)</label>
+                    <input type="file" name="photo" id="photo" accept="image/jpeg,image/png,image/gif,image/webp" required>
+
+                    <button type="submit" class="btn-primary large">Send</button>
+                </form>
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <a href="tel:3235095782" class="big-phone"><i class="fas fa-phone"></i> (323) 509-5782</a>
+                    <p><i class="fas fa-envelope"></i> groundandgone@gmail.com</p>
+                    <p>We serve the greater Michigan area</p>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>We come to you with our service's</p>
+                    </div>                    <p><strong>Emergency Service:</strong> Available for urgent cleanups</p>                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ground &amp; Gone Yard &amp; Junk Removal • All Rights Reserved</p>
+            <p>Call (323) 509-5782 • Fast &amp; Professional Service</p>
+            <p><a href="terms.html">Terms of Use</a> • <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+        });
+
+        const form = document.getElementById('contact-form');
+        const feedback = document.createElement('p');
+        feedback.className = 'form-feedback';
+        form.appendChild(feedback);
+
+        form.addEventListener('submit', function(e) {
+            const name = this.querySelector('#name').value.trim();
+            const phone = this.querySelector('#phone').value.trim();
+            const email = this.querySelector('#email').value.trim();
+            const photo = this.querySelector('#photo').files[0];
+            const phoneRegex = /^[0-9\s\-\(\)+]{10,20}$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!name) {
+                e.preventDefault();
+                feedback.textContent = 'Please enter your name.';
+                feedback.style.color = '#dc2626';
+                return;
+            }
+
+            if (!phone || !phoneRegex.test(phone)) {
+                e.preventDefault();
+                feedback.textContent = 'Please enter a valid phone number (10-20 characters).';
+                feedback.style.color = '#dc2626';
+                return;
+            }
+
+            if (!email || !emailRegex.test(email)) {
+                e.preventDefault();
+                feedback.textContent = 'Please enter a valid email address.';
+                feedback.style.color = '#dc2626';
+                return;
+            }
+
+            if (!photo) {
+                e.preventDefault();
+                feedback.textContent = 'Please attach an image file.';
+                feedback.style.color = '#dc2626';
+                return;
+            }
+
+            const allowedMime = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+            if (!allowedMime.includes(photo.type)) {
+                e.preventDefault();
+                feedback.textContent = 'Please upload a valid image file (jpg, png, gif, webp).';
+                feedback.style.color = '#dc2626';
+                return;
+            }
+
+            if (photo.size > 5 * 1024 * 1024) {
+                e.preventDefault();
+                feedback.textContent = 'Image size must be 5MB or less.';
+                feedback.style.color = '#dc2626';
+                return;
+            }
+
+            feedback.textContent = 'Sending request…';
+            feedback.style.color = '#16a34a';
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('status') === 'success') {
+            feedback.textContent = 'Request sent successfully! We will call you within 1 hour.';
+            feedback.style.color = '#16a34a';
+            form.reset();
+        } else if (params.get('status') === 'error') {
+            feedback.textContent = 'Something went wrong. Please try again or call (323) 509-5782.';
+            feedback.style.color = '#dc2626';
+        }
+    </script>
+</body>
+</html>
