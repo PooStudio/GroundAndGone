@@ -104,7 +104,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .contact-page input, .contact-page textarea { display: block; width: 100%; margin-bottom: 1.25rem; padding: .95rem 1rem; border: 1px solid var(--line); border-radius: var(--radius); background: #fbfcf8; color: var(--ink); font: inherit; }
 .contact-page input:focus, .contact-page textarea:focus { border-color: var(--lime-dark); outline: none; box-shadow: 0 0 0 3px rgba(142,183,43,.18); }
 .contact-page input[type='file'] { padding: .75rem; }
-.contact-page .g-recaptcha { margin: .25rem 0 1.25rem; overflow: hidden; }
 .contact-page .contact-info h2 { margin-top: 0; color: var(--ink); }
 .big-phone { display: block; margin: 1.5rem 0; color: var(--rust); font-size: 2rem; font-weight: 900; text-decoration: none; }
 .big-phone:hover { color: var(--lime-dark); }

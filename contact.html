@@ -8,7 +8,6 @@
     <link rel="alternate icon" href="assets/website-logo.png" type="image/png">    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -62,8 +61,6 @@
                     <label for="photo">Attach a photo (required)</label>
                     <input type="file" name="photo" id="photo" accept="image/jpeg,image/png,image/gif,image/webp" required>
 
-                    <div class="g-recaptcha" data-sitekey="6Ldqga4tAAAAANzxyKcLM4n9rwR7MqOu_R72a3JI"></div>
-
                     <button type="submit" class="btn-primary large">Send</button>
                 </form>
                 <div class="contact-info">
@@ -97,20 +94,6 @@
             hamburger.querySelector('i').classList.toggle('fa-bars');
         });
 
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', (event) => {
-            if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse()) {
-                event.preventDefault();
-                let feedback = contactForm.querySelector('.form-feedback');
-                if (!feedback) {
-                    feedback = document.createElement('p');
-                    feedback.className = 'form-feedback';
-                    contactForm.appendChild(feedback);
-                }
-                feedback.textContent = 'Please complete the reCAPTCHA check.';
-                feedback.style.color = '#dc2626';
-            }
-        });
 
     </script>
 </body>
