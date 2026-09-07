@@ -7,7 +7,8 @@
     <title>Ground & Gone | Contact Us</title>    <link rel="icon" href="assets/grounds-and-gone-logo2.png" type="image/png">
     <link rel="alternate icon" href="assets/website-logo.png" type="image/png">    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -61,6 +62,7 @@
                     <label for="photo">Attach a photo (required)</label>
                     <input type="file" name="photo" id="photo" accept="image/jpeg,image/png,image/gif,image/webp" required>
 
+                    <div class="g-recaptcha" data-sitekey="6LetYqosAAAAAO1eb8jZ8bO1PqGU4TnqFWSA-rxP"></div>
 
                     <button type="submit" class="btn-primary large">Send</button>
                 </form>
@@ -71,8 +73,10 @@
                     <p>We serve the greater Michigan area</p>
                     <div class="map-placeholder">
                         <i class="fas fa-map-marked-alt"></i>
-                        <p>We come to you with our service's</p>
-                    </div>                    <p><strong>Emergency Service:</strong> Available for urgent cleanups</p>                </div>
+                        <p>We come to you with reliable service</p>
+                    </div>
+                    <p><strong>Emergency service:</strong> Available for urgent cleanups</p>
+                </div>
             </div>
         </div>
     </section>
@@ -92,6 +96,22 @@
             hamburger.querySelector('i').classList.toggle('fa-times');
             hamburger.querySelector('i').classList.toggle('fa-bars');
         });
+
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (event) => {
+            if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse()) {
+                event.preventDefault();
+                let feedback = contactForm.querySelector('.form-feedback');
+                if (!feedback) {
+                    feedback = document.createElement('p');
+                    feedback.className = 'form-feedback';
+                    contactForm.appendChild(feedback);
+                }
+                feedback.textContent = 'Please complete the reCAPTCHA check.';
+                feedback.style.color = '#dc2626';
+            }
+        });
+
     </script>
 </body>
 </html>
